@@ -156,12 +156,14 @@ Therefore, there is no smallest `c` in `C`, `C` is an empty set, and the proposi
 
 `(P IMPLIES Q) OR (Q IMPLIES P)`
 
+```
 P | Q | P IMPLIES Q | Q IMPLIES P | CENTRAL OR
 ---
 T | T |      T      |      T      |      T
 T | F |      F      |      T      |      T
 F | T |      T      |      F      |      T
 F | F |      T      |      T      |      T
+```
 
 # 3b
 
