@@ -102,7 +102,7 @@ Well, we know that `{0}` and `{1}` are both c-d because they are finite. And we 
 
 Show that `0*` is c-d.
 
-This can be expressed as the inverse of a c-d language, namely `B1B` - the language in which each word has a 1 in it somewhere. Inverse is an allowed operation for defining c-d languages, so `0*` is c-d.
+This can be expressed as the complement of a c-d language, namely `B1B` - the language in which each word has a 1 in it somewhere. Complement is an allowed operation for defining c-d languages, so `0*` is c-d.
 
 ## 3d
 
