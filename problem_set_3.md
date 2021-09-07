@@ -44,7 +44,7 @@ I can reduce the problem to needing to prove the following:
 
 The hint that `p**2 = p + 1` seems relevant here...
 
-An interesting consequence of `p**2 = p+1` is that `p**n = F(n) + F(n-1)` I'm not sure I can prove that, but that's what I see.
+An interesting consequence of `p**2 = p+1` is that `p**n = x(F(n)) + F(n-1)` I'm not sure I can prove that, but that's what I see.
 
 Let's take that as a conjecture for now.
 
