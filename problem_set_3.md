@@ -184,7 +184,108 @@ Inductive step:
 
 Assuming that `P(n)` is true, we prove that `P(n+1)` is true.
 
-Let's start with part `a` of the predicate:
+For every single move, `P(n)` is true. From the perspective of `n`, `n+1` is just one single move. Therefore, if `P(n)` is true, `P(n+1)` is true.
 
-> the score for the sequence is `p(A) - p(B)`
+Therefore, because `P(n)` holds for every positive integer `n`, the proposition is proved. QED.
 
+# problem 3
+
+    A,B,C := sets
+    f,g,h := functions
+    f : B -> C
+    g : A -> B
+    h : A -> C
+    h ::= f(g(x)) for x in A
+
+prove/disprove:
+
+## 3a
+
+If `h` is surjective, then `f` must be surjective
+
+This is true.
+
+Surjective functions "cover the codomain", ">=1 arrows in".
+
+So, can `h` be surjective without `f` being surjective? No. Because `h` is equivalent to `f(y)` where `y` is some subset of `B`, for `h` to "cover the codomain" of `C` requires at a minimum that `f` also "cover the codomain" of `C`.
+
+Thefore, `surjective(h)` implies `surjective(f)`. QED.
+
+## 3b
+
+If `h` is surjective, then `g` must be surjective.
+
+This is false, as can be shown with a falsifing example.
+
+Suppose that
+
+    A = positive integers
+    B = positive integers
+    C = {0}
+
+and
+
+    f(x) = 0
+    g(x) = x**2
+
+In this case, `h`, `f(g(x))` would be surjective, having an arrow to all elements of `C`. But `g` here is not surjective, because not every positive integer can be made by squaring positive integers.
+
+Thefore, `surjective(h)` does not imply `surjective(g)`. QED.
+
+## 3c
+
+If `h` is injective then `f` must be injective.
+
+This is false, as can be shown with a falsifying example.
+
+Injective functions have "no codomain duplicates" - every value in the domain for which the function is defined has a unique counterpart in the codomain.
+
+Can `h` be injective without `f` being injective?
+
+Well, `h` and `f` have the same codomain. So for the contradiction to be true, there would have to be a function `h` that calls `f` as its last step, where `f` had unique arrows to codomain values, but `h` has at least one duplicate.
+
+This could maybe be true if `h` and `f` had different domains. `h` could have a bigger domain than `f`, particularly. Say `g` makes things positive...
+
+Suppose that
+
+    A = integers
+    B, C = positive integers
+
+and
+
+    f(x) = x
+    g(x) = absolute value of x
+
+`f(x)` is injective: given a positive integer `x`, it returns `x`, unique for each input integer.
+
+But, `f(g(1)) = 1` and `f(g(-1)) = 1`, meaning that `h(1) = h(-1)`, contradicting the definition of injectivity.
+
+Therefore, `injective(h)` does not imply `injective(f)`.
+
+## 3d
+
+If `h` is injective and `f` is total, then `g` must be total.
+
+This is false, as can be shown with a falsifying example.
+
+A "total" function "covers the domain" - it defines a value for every member of the domain.
+
+So, `h` being injective means that for every defined `y = f(g(x)`, `y` is unique.
+
+And, `f` being total means that there is no `x` in `B` for which `f(x)` is undefined.
+
+Do these taken together imply that `g` is total? That is, there is no `x` in `A` for which `g(x)` is undefined?
+
+Let's say that
+
+    A, B, C = integers
+    g(x) = (if x = 1, undefined; else x)
+    f(x) = x
+
+In this case, `h` is injective: for every defined `y = f(g(x)`, `y` is unique.
+
+And `f` is total: takes an integer, returns an integer, never gets tired. `f(x)` is defined for all elements in `B`
+
+But, `g` is not total, because `g(1)` is undefined.
+
+Therefore, `injective(h) AND total(f)` does not imply `total(g)`
