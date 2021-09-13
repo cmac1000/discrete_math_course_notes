@@ -130,7 +130,7 @@ Let's also establish that for any single move from `A` to `B`, `p(A) - p(B) = sc
 
 Let's denote size of a stack as `s(S)`
 
-We're making a move, so `s(A) > 1`. The move splits a stack in `A` into two stacks in `B`, call them `B0` and `B1`. The remaining elements of `A` are by the move, so they can be disregarded for the purposes of comparing `p(A)` and `p(B)`. To simplify, we can therefore assume that `A` contained a single stack `A0`, and `B` contains only `B0` and `B1`
+We're making a move, so `s(A) > 1`. The move splits a stack in `A` into two stacks in `B`, call them `B0` and `B1`. The remaining elements of `A` are unaffected by the move, so they can be disregarded for the purposes of comparing `p(A)` and `p(B)`. To simplify, we can therefore assume that `A` contained a single stack `A0`, and `B` contains only `B0` and `B1`
 
 So, we must prove that
 
