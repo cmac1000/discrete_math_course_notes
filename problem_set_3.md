@@ -262,6 +262,8 @@ But, `f(g(1)) = 1` and `f(g(-1)) = 1`, meaning that `h(1) = h(-1)`, contradictin
 
 Therefore, `injective(h)` does not imply `injective(f)`.
 
+This is wrong, did it backwards
+
 ## 3d
 
 If `h` is injective and `f` is total, then `g` must be total.

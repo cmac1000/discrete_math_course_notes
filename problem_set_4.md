@@ -20,6 +20,8 @@ This leaves two more interesting cases:
 
 # {a,c}*
 
+There must be a first move in any successful sequence. If we can eliminate `a` and `c` from being viable first moves, we can eliminate `{a,c}*`.
+
 `a` and `c` both move up the x-axis, so once the robot passes 1 on the x-axis, he can never return, and thus can never make it to (1,1). `a` can't be the beginning move of a successful sequence, because it immediately moves to 2 on the x-axis, and we already know there's no going back.
 
 `c` also fails as the beginning move of a successful sequence: from (1,3) either `a` or `c` will carry the robot further up the x-axis with no return.

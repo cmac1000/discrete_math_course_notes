@@ -92,6 +92,8 @@ By the definition of concatenation-definability, a c-d language can be construct
 
 Therefore, if we can make `R` and `S` in this manner, we can also make `R & S` by extending the operations count by one (adding one more union operation).
 
+Update: this is incorrect, we're trying to find the intersection of R and S, not the union.
+
 ## 3b
 
 Show that `0B1` is c-d.
@@ -115,6 +117,8 @@ This is the same as `B`, right? We can use the same logic as was used to show th
 * empty set is `{u} & {v}`, and complement of empty set is equivalent to `{0,1}*`
 
 Therefore, `{0,1}*` is c-d.
+
+Update: this is incorrect, we want `{01}*`, not `{0,1}*`
 
 ## 3e
 
@@ -141,6 +145,8 @@ Verify that if `R` and `S` are boring, so is `R | S`
 The union of two sets is every element that is in either set. "Boring" means that either that the language, or its complement, has finite `0` words.
 
 If `R` and `S` are both 0-finite, then the union must be finite too - you can't get an infinite set by combining two finite sets.
+
+Update: this step is invalid.
 
 If both `R` and `S` are 0-infinite, this implies that both `complement(R)` and `complement(S)` are 0-finite. `R | S` in this case is 0-infinite, so we must demonstrate that `complement(R | S)` is 0-finite. By DeMorgan's law, this is equivalent to `complement(R) & complement(S)`. It's impossible for the intersection of two sets to be 0-infinite unless both are 0-infinite, so `complement(R) & complement(S)` is 0-finite, therefore `complement(R | S)` is 0-finite, therefore `R | S` is boring.
 
