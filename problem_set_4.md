@@ -73,8 +73,8 @@ Because we're dealing with uniquely-labelled LBTs, each internal node must have 
 
 By assumption, `P(n)` is true: that means that there's a uniquely-labelled LBT with `n` nodes. There are two ways we can turn an LBT with `n` leaf nodes into an LBT with `n+1` leaf nodes:
 
-1.) We can replace a leaf node on the `n`-leafed LBT with an internal node, which has two leaf node children. In this case, we remove a leaf node, add an internal leaf node, and add two leaf nodes, for a net gain of one leaf node and one internal node.
-2.) We can "insert" an internal node between two existing nodes. If `B` is a child of `A`, and both are LBTs, we can insert `C` such that `C` becomes the child of `A`, and `B` becomes one child of `C`. To fulfil the definition of the `<l, B, C>` form, `C` needs another child, so we add a leaf node child. In this case, we add one internal node and one leaf node.
+1. We can replace a leaf node on the `n`-leafed LBT with an internal node, which has two leaf node children. In this case, we remove a leaf node, add an internal leaf node, and add two leaf nodes, for a net gain of one leaf node and one internal node.
+2. We can "insert" an internal node between two existing nodes. If `B` is a child of `A`, and both are LBTs, we can insert `C` such that `C` becomes the child of `A`, and `B` becomes one child of `C`. To fulfil the definition of the `<l, B, C>` form, `C` needs another child, so we add a leaf node child. In this case, we add one internal node and one leaf node.
 
 In both cases, we add one internal node and one leaf node, so
 
@@ -112,3 +112,109 @@ Adding one to both sides:
 This is the statement of `P(n+1)`, so we have proved that `P(n+1)` holds.
 
 Therefore, `P(n)` holds for every uniquely-labelled LBT with `n` leaf nodes. QED.
+
+# problem 3
+
+## 3a
+
+    f(x) := (1/x) - 1
+
+is a bijection from (0,1] to [0, infinity) in the domain of real numbers
+
+`1/x` almost works because it maps the uncountable set of irrational numbers between 0 and 1 to the uncountable set of irrational numbers between 0 and 1, and maps the rational numbers similarly.
+
+But it fails to be a bijection because it leaves the 0..1 segment of the [0, infinity) interval empty. Subtracting by 1 solves this.
+
+## 3b
+
+I'm not sure how to do this one. Adding a leading decimal point to any sequence in `L` yields an irrational number between 0 and 1. This is an easy bijection between `L` and the irrationals. But, the unit interval includes rationals too, and that's harder.
+
+Because sequences in `L` don't terminate, or end with infinite 0s, you can't get a rational by adding a leading decimal point to any sequence. So, for example, there's no `L` that will yield `1/2` when following the decimal point procedure, which means that the decimal point procedure doesn't yield the bijection we need.
+
+`L` is an infinite set, which is presumably crucial to the trick here. You could do something like slice off the leading digit and use that as a flag, to switch between two different procedures, one of which would yield rational numbers somehow. 
+
+Say you have these two members of L:
+
+    A: 0 then infinite 1s
+    B: infinite 1s
+
+and your procedure is something like
+
+    if the leading digit is 0, remove it and (somehow generate a rational number)
+    else, follow decimal point procedure
+
+then it would give you two infinite sets, those starting with 0 and all others.
+
+Intuitively, this seems to break the bijection between irrational numbers and members of L. "0 then infinite 1s" corresponds to some irrational number, so hiving it off and hijacking it for our rational-number procedure means that that irrational number now has no arrow pointing to it, meaning our bijection is broken.
+
+You could do a version where you always remove the first digit, but then "2, 0 then infinite 1s" and "3,0 then infinite ones" now point to the same irrational number, again breaking the bijection.
+
+If there were some nonsense sequence of digits that we could turn into 0s, that would work - say "5 then (magic sequence)" would then become "5 then 0s", which gives us a rational. But logically, it seems like any identifiable sequence of digits would create a distinct irrational number, and we need all of those for the bijection to work.
+
+I may be missing something basic, but I can't think of a way forward here.
+
+## 3c
+
+surjective func from `L` to `L**2` involving alternating digits
+
+Ok, so let's say that `LA` and `LB` are both members of `L`.
+
+So, the combination of those two yields `LC`, a member of `L**2`, which we can do by alternating the digits:
+
+`LA0, LB0, LA1, LB1, LA2, LB2...`
+
+But, since `L` is the set of all infinite sequences with infinite non-zeros, `LC` is also a member of `L`. In fact, every member of `L**2` is a member of `L`. Therefore, the identity function works as a surjection from `L` to `L**2`:
+
+    f(x) := x
+
+This doesn't seem to require the hint that the surjection need not be total, so maybe I'm missing something here.
+
+## 3d
+
+Lemma 3.1: if A and B are nonempty sets, and there is a bijection from A to B, then there is also a bijection between AxA and BxB (x means cartesian product)
+
+This makes intuitive sense, I think it follows from the definition of a bijection.
+
+any member of AxA is the combination of two members of A: A0 and A1.
+
+similarly, any member of BxB is the combination of two members of B: B0 and B1.
+
+let's call our A->B bijection `f`.
+
+let's say that `f(A0) = B0` and `f(A1) = B1`. By the definition of bijections, no other values of `A` equal the corresponding `B` values.
+
+So, it's simple to extend `f` to be a bijection between `AxA` and `BxB`:
+
+    f(A0),f(A1) = B0, B1
+
+the fact that `f` is a bijection guarantees that this generates a "unique address" in the codomain from all `AxA` to all `BxB` with no overlap.
+
+///
+
+Prove there is a bijection from `L**2` to `(0,1]**2`
+
+We know (or are supposed to) from problem `b` that there is a bijection from `L` to `(0,1]*`. From lemma 3.1, it immediately follows that there is a bijection from `L**2` to `(0,1]**2`. QED.
+
+# 3e
+
+Prove a surjection from `(0,1]` to `(0,1]**2`
+
+By problem c, we know that `L surj L**2`
+
+Because problem b tells us that `L bij (0,1]`, we can substitute and get
+
+`(0,1] surj L**2`
+
+By lemma 3.1, it follows that `L**2 bij (0,1]**2`, so we can substitute again:
+
+`(0,1] surj (0,1]**2`
+
+Schröder-Bernstein says: for sets A,B; if A surj B and B surj A, then A bij B
+
+It's easy to show that `(0,1]**2 surj (0,1]`: `f(x) = x[0]` is a surjective function from pairs of real numbers to real numbers.
+
+Therefore, Schröder-Bernstein implies that `(0,1] bij (0,1]**2`
+
+# 3f
+
+Complete the proof that `(0,1]**2 bij [0, infinity)**2`
