@@ -217,4 +217,24 @@ Therefore, Schröder-Bernstein implies that `(0,1] bij (0,1]**2`
 
 # 3f
 
-Complete the proof that `(0,1]**2 bij [0, infinity)**2`
+Complete the proof that `(0,1] bij [0, infinity)**2`
+
+Proof. The proof is by implication.
+
+By problem a, we know that 
+
+    3.1 (0,1] bij [0, infinity)
+
+By problem d, this implies
+
+    3.2 (0,1]**2 bij [0, infinity)**2
+
+By problem e, we know that 
+
+    3.3 (0,1] bij (0,1]**2
+
+because of this bijection, we can rewrite 3.2 as
+
+    3.4 (0,1] bij [0, infinity)**2
+
+QED.
