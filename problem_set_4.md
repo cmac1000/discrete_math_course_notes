@@ -129,7 +129,7 @@ But it fails to be a bijection because it leaves the 0..1 segment of the [0, inf
 
 I'm not sure how to do this one. Adding a leading decimal point to any sequence in `L` yields an irrational number between 0 and 1. This is an easy bijection between `L` and the irrationals. But, the unit interval includes rationals too, and that's harder.
 
-Because sequences in `L` don't terminate, or end with infinite 0s, you can't get a rational by adding a leading decimal point to any sequence. So, for example, there's no `L` that will yield `1/2` when following the decimal point procedure, which means that the decimal point procedure doesn't yield the bijection we need.
+Because sequences in `L` don't terminate, or end with infinite 0s, you can't get a rational by adding a leading decimal point to any sequence. So, for example, there's no sequence in `L` that will yield `1/2` when following the decimal point procedure, which means that the decimal point procedure doesn't yield the bijection we need.
 
 `L` is an infinite set, which is presumably crucial to the trick here. You could do something like slice off the leading digit and use that as a flag, to switch between two different procedures, one of which would yield rational numbers somehow. 
 
@@ -165,7 +165,7 @@ So, the combination of those two yields `LC`, a member of `L**2`, which we can d
 
 But, since `L` is the set of all infinite sequences with infinite non-zeros, `LC` is also a member of `L`. In fact, every member of `L**2` is a member of `L`. Therefore, the identity function works as a surjection from `L` to `L**2`:
 
-    f(x) := x
+    f(x) = x
 
 This doesn't seem to require the hint that the surjection need not be total, so maybe I'm missing something here.
 
