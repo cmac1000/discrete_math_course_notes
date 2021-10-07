@@ -33,3 +33,14 @@ Because the proposition is true in all case, it is proved. QED.
 
 # problem 3
 
+## 3a
+
+Let's call our king chicken chicken A. A pecks B, B pecks C, and so on to chicken J. Every chicken other than B pecks A. But, because A indirectly pecks chickens B to J, and directly pecks B, she is a king.
+
+## 3b
+
+We can solve this with a ring structure as well. if the cycle `A->B->C->D->E->A` exists, every chicken directly or indirectly pecks every other.
+
+## 3c
+
+King Chicken Theorem: The chicken with the largest outdegree in an n-chicken tournament is a king.
